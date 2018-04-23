@@ -35,15 +35,37 @@ class Categoria
     private $descripcion;
 
     /**
+     * @ORM\Column(type="boolean")
+     *
+     * @var boolean
+     */
+    private $aprobada;
+
+    /**
+     * @ORM\Column(type="date")
+     *
+     * @var \DateTime
+     */
+    private $fechaAceptacion;
+
+    /**
      * @ORM\OneToMany(targetEntity="Enlace", mappedBy="$categoriaEnlace")
      *
      * @var Collection|Enlace[]
      */
     private $totalEnlaces;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Gestiona", mappedBy="idCategoria")
+     *
+     * @var Collection|Gestiona[]
+     */
+    private $gestiona;
+
     public function __construct()
     {
         $this->totalEnlaces = new ArrayCollection();
+        $this->gestiona = new ArrayCollection();
     }
 
     /// ------------ ///
@@ -89,6 +111,42 @@ class Categoria
     public function setDescripcion($descripcion)
     {
         $this->descripcion = $descripcion;
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getAprobada()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * @param boolean $aprobada
+     * @return Categoria
+     */
+    public function setAprobada($aprobada)
+    {
+        $this->aprobada = $aprobada;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getFechaAceptacion()
+    {
+        return $this->fechaAceptacion;
+    }
+
+    /**
+     * @param \DateTime $fechaAceptacion
+     * @return Categoria
+     */
+    public function setFechaAceptacion($fechaAceptacion)
+    {
+        $this->fechaAceptacion = $fechaAceptacion;
         return $this;
     }
 

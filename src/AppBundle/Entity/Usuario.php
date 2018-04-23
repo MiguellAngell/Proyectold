@@ -71,9 +71,17 @@ class Usuario
      */
     private $enlacesSubidos;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Gestiona", mappedBy="idUsuario")
+     *
+     * @var Collection|Gestiona[]
+     */
+    private $gestiona;
+
     public function __construct()
     {
         $this->enlacesSubidos = new ArrayCollection();
+        $this->gestiona = new ArrayCollection();
     }
 
     public function __toString()
