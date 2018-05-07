@@ -78,10 +78,19 @@ class Usuario
      */
     private $gestiona;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Administrar", mappedBy="idUsuario")
+     *
+     * @var Collection|Administrar[]
+     */
+    private $administrar;
+
+
     public function __construct()
     {
         $this->enlacesSubidos = new ArrayCollection();
         $this->gestiona = new ArrayCollection();
+        $this->administrar = new ArrayCollection();
     }
 
     public function __toString()

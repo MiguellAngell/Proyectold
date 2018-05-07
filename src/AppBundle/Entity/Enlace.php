@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -56,6 +58,18 @@ class Enlace
      * @var Categoria
      */
     private $categoriaEnlace;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Administrar", mappedBy="idEnlace")
+     *
+     * @var Collection|Administrar[]
+     */
+    private $administrar;
+
+    public function __construct()
+    {
+        $this->administrar = new ArrayCollection();
+    }
 
     /// ------------ ///
 
