@@ -86,6 +86,13 @@ class Usuario
     private $administrar;
 
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Grupos"),inversedBy="usuarios")
+     *
+     * @var Grupos
+     */
+    private $grupos;
+
     public function __construct()
     {
         $this->enlacesSubidos = new ArrayCollection();
