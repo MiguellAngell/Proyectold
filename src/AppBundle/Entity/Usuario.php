@@ -89,7 +89,7 @@ class Usuario
     /**
      * @ORM\ManyToMany(targetEntity="Grupos"),inversedBy="usuarios")
      *
-     * @var Grupos
+     * @var Collection|Grupos[]
      */
     private $grupos;
 
@@ -98,6 +98,7 @@ class Usuario
         $this->enlacesSubidos = new ArrayCollection();
         $this->gestiona = new ArrayCollection();
         $this->administrar = new ArrayCollection();
+        $this->grupos=new ArrayCollection();
     }
 
     public function __toString()
@@ -256,5 +257,105 @@ class Usuario
 
         return $this;
     }
+
+    /**
+     * @return Collection
+     */
+    public function getGestiona()
+    {
+        return $this->gestiona;
+    }
+
+    /**
+     * @param Gestiona $gestiona
+     * @return Usuario
+     */
+    public function addGestiona(Gestiona $gestiona)
+    {
+        if (!$this->gestiona->contains($gestiona)) {
+            $this->gestiona->add($gestiona);
+        }
+        return $this;
+    }
+
+    /**
+     * @param Gestiona $gestiona
+     * @return Usuario
+     */
+    public function removeGestiona(Gestiona $gestiona)
+    {
+        if ($this->gestiona->contains($gestiona)) {
+            $this->gestiona->removeElement($gestiona);
+        }
+        return $this;
+    }
+
+
+    /**
+     * @return Collection
+     */
+    public function getAdministrar()
+    {
+        return $this->administrar;
+    }
+
+    /**
+     * @param Administrar $administrar
+     * @return Usuario
+     */
+    public function addAdministrar(Administrar $administrar)
+    {
+        if (!$this->$administrar->contains($administrar)) {
+            $this->$administrar->add($administrar);
+        }
+        return $this;
+    }
+
+    /**
+     * @param Administrar $administrar
+     * @return Usuario
+     */
+    public function removeAdministrar(Administrar $administrar)
+    {
+        if ($this->$administrar->contains($administrar)) {
+            $this->$administrar->removeElement($administrar);
+        }
+        return $this;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getGrupos()
+    {
+        return $this->grupos;
+    }
+
+    /**
+     * @param Grupos $grupos
+     * @return Usuario
+     */
+    public function addGrupos(Grupos $grupos)
+    {
+        if (!$this->$grupos->contains($grupos)) {
+            $this->$grupos->add($grupos);
+        }
+        return $this;
+    }
+
+
+    /**
+     * @param Grupos $grupos
+     * @return Usuario
+     */
+    public function removeGrupos(Grupos $grupos)
+    {
+        if ($this->$grupos->contains($grupos)) {
+            $this->$grupos->removeElement($grupos);
+        }
+        return $this;
+    }
+
+
 
 }

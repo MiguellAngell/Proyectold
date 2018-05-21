@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -55,11 +57,23 @@ class Grupos
     private $totalMiembros;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Usuario"),mappedBy="grupos")
+     * @ORM\ManyToMany(targetEntity="Usuario",mappedBy="grupos")
      *
-     * @var Usuario
+     * @var Collection|Usuario[]
      */
     private $usuarios;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Categoria", inversedBy="grupo")
+     *
+     * @var Categoria
+     */
+    private $categoria;
+
+    public function __construct()
+    {
+        $this->usuarios = new ArrayCollection();
+    }
 
     /// ------------ ///
 
@@ -158,6 +172,59 @@ class Grupos
     public function setTotalMiembros($totalMiembros)
     {
         $this->totalMiembros = $totalMiembros;
+        return $this;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getUsuarios()
+    {
+        return $this->usuarios;
+    }
+
+    /**
+     * @param Usuario $usuarios
+     * @return Grupos
+     */
+    public function addUsuarios(Usuario $usuarios)
+    {
+        if (!$this->usuarios->contains($usuarios)){
+            $this->usuarios->add($usuarios);
+        }
+        return $this;
+    }
+
+    /**
+     * @param Usuario $usuarios
+     * @return Grupos
+     */
+    public function removeUsuarios(Usuario $usuarios)
+    {
+        if ($this->usuarios->contains($usuarios)){
+            $this->usuarios->removeElement($usuarios);
+        }
+
+        return $this;
+    }
+
+
+
+    /**
+     * @return Categoria
+     */
+    public function getCategoria()
+    {
+        return $this->categoria;
+    }
+
+    /**
+     * @param Categoria $categoria
+     * @return Grupos
+     */
+    public function setCategoria($categoria)
+    {
+        $this->categoria = $categoria;
         return $this;
     }
 

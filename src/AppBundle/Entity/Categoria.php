@@ -62,6 +62,13 @@ class Categoria
      */
     private $gestiona;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Grupos"),mappedBy="categoria")
+     *
+     * @var Grupos
+     */
+    private $grupo;
+
     public function __construct()
     {
         $this->totalEnlaces = new ArrayCollection();
