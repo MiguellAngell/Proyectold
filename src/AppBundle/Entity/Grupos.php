@@ -64,7 +64,7 @@ class Grupos
     private $usuarios;
 
     /**
-     * @ORM\OneToOne(targetEntity="Categoria", inversedBy="grupo")
+     * @ORM\OneToOne(targetEntity="Categoria", mappedBy="grupo")
      *
      * @var Categoria
      */

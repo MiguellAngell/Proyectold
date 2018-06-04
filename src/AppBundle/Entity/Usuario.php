@@ -87,7 +87,7 @@ class Usuario
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="Grupos"),inversedBy="usuarios")
+     * @ORM\ManyToMany(targetEntity="Grupos",inversedBy="usuarios")
      *
      * @var Collection|Grupos[]
      */

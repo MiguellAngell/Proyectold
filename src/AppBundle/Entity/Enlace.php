@@ -52,9 +52,7 @@ class Enlace
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Categoria", inversedBy="totalEnlaces")
-     * @ORM\JoinColumn(nullable=false)
-     *
+     * @ORM\ManyToOne(targetEntity="Categoria", inversedBy="totalEnlaces")
      * @var Categoria
      */
     private $categoriaEnlace;

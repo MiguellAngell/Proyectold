@@ -49,7 +49,7 @@ class Categoria
     private $fechaAceptacion;
 
     /**
-     * @ORM\OneToMany(targetEntity="Enlace", mappedBy="$categoriaEnlace")
+     * @ORM\OneToMany(targetEntity="Enlace", mappedBy="categoriaEnlace")
      *
      * @var Collection|Enlace[]
      */
@@ -63,7 +63,7 @@ class Categoria
     private $gestiona;
 
     /**
-     * @ORM\OneToOne(targetEntity="Grupos"),mappedBy="categoria")
+     * @ORM\OneToOne(targetEntity="Grupos",inversedBy="categoria")
      *
      * @var Grupos
      */
