@@ -175,4 +175,39 @@ class Categoria
         return $this;
     }
 
+    /**
+     * @return Collection
+     */
+    public function getGestiona()
+    {
+        return $this->gestiona;
+    }
+
+    /**
+     * @param Gestiona $gestiona
+     * @return Categoria
+     */
+    public function setGestiona($gestiona)
+    {
+        $this->gestiona = $gestiona;
+        return  $this;
+    }
+
+    /**
+     * @return Grupos
+     */
+    public function getGrupo()
+    {
+        return $this->grupo;
+    }
+
+    /**
+     * @param Grupos $grupo
+     */
+    public function setGrupo($grupo)
+    {
+        $this->grupo = $grupo;
+    }
+
+
 }

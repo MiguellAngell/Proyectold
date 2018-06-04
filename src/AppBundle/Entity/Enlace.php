@@ -171,7 +171,23 @@ class Enlace
         return $this;
     }
 
+    /**
+     * @return Collection
+     */
+    public function getAdministrar()
+    {
+        return $this->administrar;
+    }
 
+    /**
+     * @param Administrar $administrar
+     * @return Enlace
+     */
+    public function setAdministrar($administrar)
+    {
+        $this->administrar = $administrar;
+        return $this;
+    }
 
 }
 

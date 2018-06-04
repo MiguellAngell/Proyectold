@@ -208,8 +208,6 @@ class Grupos
         return $this;
     }
 
-
-
     /**
      * @return Categoria
      */
