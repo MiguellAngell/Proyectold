@@ -49,7 +49,7 @@ class Categoria
     private $fechaAceptacion;
 
     /**
-     * @ORM\OneToMany(targetEntity="Enlace", mappedBy="$categoriaEnlace")
+     * @ORM\OneToMany(targetEntity="Enlace", mappedBy="categoriaEnlace")
      *
      * @var Collection|Enlace[]
      */
@@ -61,6 +61,13 @@ class Categoria
      * @var Collection|Gestiona[]
      */
     private $gestiona;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Grupos",inversedBy="categoria")
+     *
+     * @var Grupos
+     */
+    private $grupo;
 
     public function __construct()
     {
@@ -167,5 +174,40 @@ class Categoria
         $this->totalEnlaces = $totalEnlaces;
         return $this;
     }
+
+    /**
+     * @return Collection
+     */
+    public function getGestiona()
+    {
+        return $this->gestiona;
+    }
+
+    /**
+     * @param Gestiona $gestiona
+     * @return Categoria
+     */
+    public function setGestiona($gestiona)
+    {
+        $this->gestiona = $gestiona;
+        return  $this;
+    }
+
+    /**
+     * @return Grupos
+     */
+    public function getGrupo()
+    {
+        return $this->grupo;
+    }
+
+    /**
+     * @param Grupos $grupo
+     */
+    public function setGrupo($grupo)
+    {
+        $this->grupo = $grupo;
+    }
+
 
 }

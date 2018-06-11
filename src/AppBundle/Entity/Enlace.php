@@ -52,9 +52,7 @@ class Enlace
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Categoria", inversedBy="totalEnlaces")
-     * @ORM\JoinColumn(nullable=false)
-     *
+     * @ORM\ManyToOne(targetEntity="Categoria", inversedBy="totalEnlaces")
      * @var Categoria
      */
     private $categoriaEnlace;
@@ -171,7 +169,23 @@ class Enlace
         return $this;
     }
 
+    /**
+     * @return Collection
+     */
+    public function getAdministrar()
+    {
+        return $this->administrar;
+    }
 
+    /**
+     * @param Administrar $administrar
+     * @return Enlace
+     */
+    public function setAdministrar($administrar)
+    {
+        $this->administrar = $administrar;
+        return $this;
+    }
 
 }
 
