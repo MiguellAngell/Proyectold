@@ -5,8 +5,9 @@
 {% endblock %}
 
 {% block content %}
-    <h1>{{ usuario.nombre }}</h1>
-    <h2>Nombre de usuario {{ usuario.nombre_usuario }} </h2>
+    <h1> {{ usuario.tipoUsuario }} </h1>
+    <h3>Nombre de usuario {{ usuario.nombreUsuario }} </h3>
+    <h3>Correo electronico {{ usuario.correoElectronico }} </h3>
     <p>{{ usuario.apellidos }},{{ usuario.nombre }}</p>
 
     <a href="{{ path('usuarios_listar') }}">Volver al listado de usuarios</a>

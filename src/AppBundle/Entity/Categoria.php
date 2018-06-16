@@ -126,7 +126,7 @@ class Categoria
      */
     public function getAprobada()
     {
-        return $this->descripcion;
+        return $this->aprobada;
     }
 
     /**

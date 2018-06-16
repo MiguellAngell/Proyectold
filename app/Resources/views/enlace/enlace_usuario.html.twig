@@ -1,9 +1,9 @@
 {% extends 'layout.html.twig' %}
 
-{% block title 'Lista de Enlaces' %}
+{% block title 'Enlaces de {{ usuario }}' %}
 
 {% block content %}
-    <h1>Lista de Enlaces</h1>
+    <h1>Lista de enlaces por {{ usuario }}</h1>
 
     <table class="table table-bordered table-hover table-striped">
         <thead>
@@ -11,22 +11,22 @@
             <th>Nombre</th>
             <th>Autor</th>
             <th>Descripcion</th>
-            <th>Total de enlaces de:</th>
         </tr>
         </thead>
         <tbody>
         {% for link in enlace %}
             <tr>
-                <td>{{ link.nombre}}</td>
-                <td><a href="{{ path('enlaces_mostrar', {'id': link.id}) }}">{{ link.autor }}</a></td>
+                <td><a href="{{ path('enlaces_mostrar', {'id': link.id}) }}">{{ link.nombre }}</a></td>
+                <td>{{ link.autor}}</td>
                 <td>{{ link.descripcion }}</td>
-                <td><a href="{{ path('enlace_usuario_mostrar', {'id': link.autor.id}) }}">{{ link.autor }}</a></td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">No hay Enlaces que mostrar</td>
+                <td colspan="4">No hay enlaces que mostrar</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+
+    <a href="{{ path('enlaces_listar') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Volver al listado completo de enlaces</a>
 {% endblock %}

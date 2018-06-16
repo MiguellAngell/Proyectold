@@ -1,14 +1,14 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}
-    Detalle: {{ enlace.titulo }}
+    Detalle: {{ enlace.nombre }}
 {% endblock %}
 
 {% block content %}
-    <h1>{{ enlace.titulo }}</h1>
-    <h2>Propuesta por {{ enlace.autor }} el {{ enlace.fecha_propuesta|date('d/m/Y') }}</h2>
+    <h1>{{ enlace.nombre }}</h1>
+    <h2>Propuesta por {{ enlace.autor }}</h2>
     <p>{{ enlace.descripcion }}</p>
 
-    <a href="{{ path('enlaces_listar') }}">Volver al listado de enlaces</a>
+    <a href="{{ path('enlaces_listar') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Volver al listado de enlaces</a>
 {% endblock %}
 

@@ -17,7 +17,11 @@
                 <ul class="nav navbar-nav">
                     <li{% if app.request.attributes.get('_route') == 'inicio' %} class="active"{% endif %}><a href="{{ path('inicio') }}"><i class="fa fa-home"></i> Inicio</a></li>
                     <li{% if app.request.attributes.get('_route') == 'enlaces_listar' %} class="active"{% endif %}><a href="{{ path('enlaces_listar') }}"><i class="fa fa-list"></i> Enlaces</a></li>
-                    <li{% if app.request.attributes.get('_route') == 'enlaces_listar' %} class="active"{% endif %}><a href="{{ path('usuarios_listar') }}"><i class="fa fa-list"></i> Usuarios</a></li>
+                    <li{% if app.request.attributes.get('_route') == 'usuarios_listar' %} class="active"{% endif %}><a href="{{ path('usuarios_listar') }}"><i class="fa fa-list"></i> Usuarios</a></li>
+                    <li{% if app.request.attributes.get('_route') == 'grupos_listar' %} class="active"{% endif %}><a href="{{ path('grupos_listar') }}"><i class="fa fa-list"></i> Grupos</a></li>
+                    <li{% if app.request.attributes.get('_route') == 'categorias_listar' %} class="active"{% endif %}><a href="{{ path('categorias_listar') }}"><i class="fa fa-list"></i> Categorias</a></li>
+                    <li{% if app.request.attributes.get('_route') == 'administrar_listar' %} class="active"{% endif %}><a href="{{ path('administrar_listar') }}"><i class="fa fa-list"></i> Administrar</a></li>
+                    <li{% if app.request.attributes.get('_route') == 'gestiona_listar' %} class="active"{% endif %}><a href="{{ path('gestiona_listar') }}"><i class="fa fa-list"></i> Gestion Categorias</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>

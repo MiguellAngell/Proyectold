@@ -1,0 +1,32 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'Lista de categorias' %}
+
+{% block content %}
+    <h1>Lista de categorias</h1>
+
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Estado</th>
+            <th>fecha aceptacion</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for categoria in categorias %}
+            <tr>
+                <td><a href="{{ path('categorias_mostrar', {'id': categoria.id}) }}">{{ categoria.nombreCategoria }}</a></td>
+                <td>{{ categoria.descripcion}}</td>
+                <td>{{ categoria.aprobada }}</td>
+                <td>{{ categoria.fechaAceptacion|date('d/m/Y') }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">No hay grupos que mostrar</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

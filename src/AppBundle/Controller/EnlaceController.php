@@ -2,6 +2,8 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Enlace;
+use AppBundle\Entity\Usuario;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -10,37 +12,35 @@ class EnlaceController extends Controller
     /**
      * @Route("/enlaces", name="enlaces_listar")
      */
-
     public function listarAction()
     {
-        $enlaces = $this->getEnlaces();
+        $enlaces = $this->getDoctrine()->getRepository('AppBundle:Enlace')->findAll();
 
-        return $this->render('enlace/enlace.html.twig',[
-        'enlace' => $enlaces
+        return $this->render('enlace/enlace.html.twig', [
+            'enlace' => $enlaces
         ]);
     }
 
     /**
-     * @Route("/enlaces/{id}", name="enlaces_mostrar")
+     * @Route("/enlace/usuario/{id}", name="enlace_usuario_mostrar")
      */
-    public function mostrarAction($id)
+    public function mostrarUsuarioAction(Usuario $usuario)
     {
-        $enlaces = $this->getEnlaces();
-
-        if (!isset($enlaces[$id])) {
-            throw $this->createNotFoundException();
-        }
-
-        return $this->render('enlace/mostrar.html.twig', [
-            'enlace' => $enlaces[$id]
+        return $this->render('enlace/enlace_usuario.html.twig', [
+            'usuario' => $usuario,
+            'enlace' => $usuario->getEnlacesSubidos()
         ]);
     }
 
-    private function getEnlaces(){
-        return [
-            1 => ['id' => 1,'titulo' => 'enlace google', 'descripcion' => 'google', 'autor' => 'alumno1', 'fecha_propuesta' => new \DateTime('2018-3-3')],
-            3 =>['id' => 3,'titulo' => 'enlace youtube', 'descripcion' => 'youtube', 'autor' => 'alumno2', 'fecha_propuesta' => new \DateTime('2018-3-4')],
-            6 => ['id' => 6,'titulo' => 'enlace el mundo', 'descripcion' => 'elmundo', 'autor' => 'alumno3', 'fecha_propuesta' => new \DateTime('2018-3-5')]
-        ];
+
+
+    /**
+     * @Route("/enlaces/{id}", name="enlaces_mostrar")
+     */
+    public function mostrarAction(Enlace $enlace)
+    {
+        return $this->render('enlace/mostrar.html.twig', [
+            'enlace' => $enlace
+        ]);
     }
 }

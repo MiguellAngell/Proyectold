@@ -40,7 +40,7 @@ AppBundle\Entity\Gestiona:
 AppBundle\Entity\Grupos:
  grupos_{1..20}:
   nombre: <sentence()>
-  nombreAdmin: $usuario->$getNombreUsuario()
+  nombreAdmin: '@usuario*->nombreUsuario'
   fechaCreacion: <dateTimeThisYear()>
   totalMiembros: <numberBetween(1,10)>
   descripcion: <paragraph()>

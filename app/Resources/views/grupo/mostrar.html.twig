@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    Detalle: {{ grupo.nombre }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ grupo.nombre }}</h1>
+    <h2>Creado por {{ grupo.nombreAdmin }}</h2>
+    <p>{{ grupo.descripcion }}</p>
+    <h2>Mienbros {{ gru.totalMiembros }}</h2>
+
+    <a href="{{ path('grupos_listar') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Volver al listado de grupos</a>
+{% endblock %}
+

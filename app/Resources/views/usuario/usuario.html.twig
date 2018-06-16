@@ -11,6 +11,8 @@
             <th>Nombre</th>
             <th>Apellidos</th>
             <th>Nombre de usuario</th>
+            <th>Correo Electronico</th>
+            <th>Tipo de usuario</th>
         </tr>
         </thead>
         <tbody>
@@ -18,7 +20,9 @@
             <tr>
                 <td>{{ nom.nombre }}</td>
                 <td>{{ nom.apellidos }}</td>
-                <td><a href="{{ path('usuarios_mostrar', {'id': nom.id}) }}">{{ nom.nombre_usuario }}</a></td>
+                <td><a href="{{ path('usuarios_mostrar', {'id': nom.id}) }}">{{ nom.nombreUsuario }}</a></td>
+                <td>{{ nom.correoElectronico }}</td>
+                <td>{{ nom.tipoUsuario }}</td>
             </tr>
         {% else %}
             <tr>

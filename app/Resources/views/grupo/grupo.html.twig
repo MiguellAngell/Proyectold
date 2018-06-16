@@ -1,0 +1,34 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'Lista de Enlaces' %}
+
+{% block content %}
+    <h1>Lista de grupos</h1>
+
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Administrador del grupo</th>
+            <th>fecha creacion</th>
+            <th>Descripcion</th>
+            <th>total miembros</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for grupo in grupos %}
+            <tr>
+                <td><a href="{{ path('grupos_mostrar', {'id': grupo.id}) }}">{{ grupo.nombre }}</a></td>
+                <td>{{ grupo.nombreAdmin}}</td>
+                <td>{{ grupo.fechaCreacion|date('d/m/Y') }}</td>
+                <td>{{ grupo.descripcion }}</td>
+                <td>{{ grupo.totalMiembros }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">No hay grupos que mostrar</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

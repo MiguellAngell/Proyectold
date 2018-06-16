@@ -33,7 +33,6 @@ class Administrar
      */
     private $fechaSubida;
 
-
     /**
      * @ORM\Column(type="date", nullable=true)
      *
@@ -50,8 +49,6 @@ class Administrar
 
     /**
      * @ORM\Column(type="text")
-     *
-     * @var string
      */
     private $observaciones;
 
@@ -94,6 +91,26 @@ class Administrar
         $this->idEnlace = $idEnlace;
         return $this;
     }
+
+    /**
+     * @return \DateTime
+     */
+    public function getFechaSubida()
+    {
+        return $this->fechaSubida;
+    }
+
+    /**
+     * @param \DateTime $fechaSubida
+     *
+     * @return Administrar
+     */
+    public function setFechaSubida($fechaSubida)
+    {
+        $this->fechaSubida = $fechaSubida;
+        return $this;
+    }
+
 
     /**
      * @return \DateTime
@@ -149,24 +166,6 @@ class Administrar
     public function setObservaciones($observaciones)
     {
         $this->observaciones = $observaciones;
-        return $this;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getFechaSubida()
-    {
-        return $this->fechaSubida;
-    }
-
-    /**
-     * @param \DateTime $fechaSubida
-     * @return Administrar
-     */
-    public function setFechaSubida($fechaSubida)
-    {
-        $this->fechaSubida = $fechaSubida;
         return $this;
     }
 
