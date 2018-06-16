@@ -1,0 +1,32 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'Lista de Enlaces' %}
+
+{% block content %}
+    <h1>Lista de Enlaces</h1>
+
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Título</th>
+            <th>Detalle</th>
+            <th>Autor</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for link in enlace %}
+            <tr>
+                <td>{{ link.fecha_propuesta|date('d/m/Y') }}</td>
+                <td><a href="{{ path('enlaces_mostrar', {'id': link.id}) }}">{{ link.titulo }}</a></td>
+                <td>{{ link.descripcion }}</td>
+                <td>{{ link.autor }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">No hay Enlaces que mostrar</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    Detalle: {{ usuario.nombre }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ usuario.nombre }}</h1>
+    <h2>Nombre de usuario {{ usuario.nombre_usuario }} </h2>
+    <p>{{ usuario.apellidos }},{{ usuario.nombre }}</p>
+
+    <a href="{{ path('usuarios_listar') }}">Volver al listado de usuarios</a>
+{% endblock %}
+

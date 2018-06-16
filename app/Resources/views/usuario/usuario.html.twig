@@ -1,0 +1,30 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'Lista de Enlaces' %}
+
+{% block content %}
+    <h1>Lista de Enlaces</h1>
+
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Nombre de usuario</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for nom in usuario %}
+            <tr>
+                <td>{{ nom.nombre }}</td>
+                <td>{{ nom.apellidos }}</td>
+                <td><a href="{{ path('usuarios_mostrar', {'id': nom.id}) }}">{{ nom.nombre_usuario }}</a></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">No hay Usuarios que mostrar</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
