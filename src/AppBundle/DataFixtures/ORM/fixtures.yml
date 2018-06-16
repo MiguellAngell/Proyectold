@@ -6,19 +6,12 @@ AppBundle\Entity\Usuario:
    password: <word()>
    correoElectronico: <es_ES:email()>
    tipoUsuario: user
-   enlacesSubidos: '@enlace*'
-   gestiona: '@gestiona*'
-   administrar: '@administrar*'
-   grupos: '@grupos*'
 
 AppBundle\Entity\Enlace:
   enlace_{1..20}:
    nombre: <sentence()>
    descripcion: <paragraph()>
    autor: '@usuario*'
-   fechaSubida: <dateTimeThisYear()>
-   categoriaEnlace: '@categoria*'
-   administrar: '@administrar*'
 
 AppBundle\Entity\Categoria:
  categoria_{1..20}:
@@ -26,16 +19,14 @@ AppBundle\Entity\Categoria:
   descripcion: <paragraph()>
   aprobada: <boolean(75)>
   fechaAceptacion: <dateTimeThisYear()>
-  totalEnlaces: '@enlace*'
-  gestiona: '@gestiona*'
-  grupo: '@grupo*'
 
 AppBundle\Entity\Administrar:
- administrar_{1..20}:
+ administrar_{1..10}:
   idUsuario: '@usuario*'
   idEnlace: '@enlace*'
-  fechaAceptacion: '25%? <dateTimeBetween($enlace->$getFechaSubida(), "now")>'
-  fechaRechazo: '25%? <dateTimeBetween(max($enlace->$getFechaSubida(), $fechaAceptacion), "now")>'
+  fechaSubida: <dateTimeThisYear()>
+  fechaAceptacion: '25%? <dateTimeBetween($fechaSubida, "now")>'
+  fechaRechazo: '25%? <dateTimeBetween(max($fechaSubida, $fechaAceptacion), "now")>'
   observaciones: <paragraph()>
 
 AppBundle\Entity\Gestiona:
@@ -43,7 +34,7 @@ AppBundle\Entity\Gestiona:
   idUsuario: '@usuario*'
   idCategoria: '@categoria*'
   numeroCambios: <numberBetween(1,5)>
-  ultimaModificacion: <dateTimeBetween($categoria->$getFechaAceptacion(), "now")>'
+  ultimaModificacion: <dateTimeBetween("dateTimeThisYear()", "now")>
   observaciones: <paragraph()>
 
 AppBundle\Entity\Grupos:
@@ -52,5 +43,4 @@ AppBundle\Entity\Grupos:
   nombreAdmin: $usuario->$getNombreUsuario()
   fechaCreacion: <dateTimeThisYear()>
   totalMiembros: <numberBetween(1,10)>
-  usuarios: '@usuario*'
-  categoria: '@categoria*'
+  descripcion: <paragraph()>

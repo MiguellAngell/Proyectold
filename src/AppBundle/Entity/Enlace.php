@@ -29,7 +29,7 @@ class Enlace
     private $nombre;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text")
      *
      * @var string
      */
@@ -42,14 +42,6 @@ class Enlace
      * @var Usuario
      */
     private $autor;
-
-    /**
-     * @ORM\Column(type="date")
-     *
-     * @var \DateTime
-     */
-    private $fechaSubida;
-
 
     /**
      * @ORM\ManyToOne(targetEntity="Categoria", inversedBy="totalEnlaces")
@@ -130,24 +122,6 @@ class Enlace
     public function setAutor($autor)
     {
         $this->autor = $autor;
-        return $this;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getFechaSubida()
-    {
-        return $this->fechaSubida;
-    }
-
-    /**
-     * @param \DateTime $fechaSubida
-     * @return Enlace
-     */
-    public function setFechaSubida($fechaSubida)
-    {
-        $this->fechaSubida = $fechaSubida;
         return $this;
     }
 

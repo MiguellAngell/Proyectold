@@ -31,17 +31,27 @@ class Administrar
      *
      * @var \DateTime
      */
+    private $fechaSubida;
+
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     *
+     * @var \DateTime
+     */
     private $fechaAceptacion;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      *
      * @var \DateTime
      */
     private $fechaRechazo;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text")
+     *
+     * @var string
      */
     private $observaciones;
 
@@ -139,6 +149,24 @@ class Administrar
     public function setObservaciones($observaciones)
     {
         $this->observaciones = $observaciones;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getFechaSubida()
+    {
+        return $this->fechaSubida;
+    }
+
+    /**
+     * @param \DateTime $fechaSubida
+     * @return Administrar
+     */
+    public function setFechaSubida($fechaSubida)
+    {
+        $this->fechaSubida = $fechaSubida;
         return $this;
     }
 

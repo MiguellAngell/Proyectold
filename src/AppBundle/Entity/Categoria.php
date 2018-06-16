@@ -28,7 +28,7 @@ class Categoria
     private $nombreCategoria;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text")
      *
      * @var string
      */
