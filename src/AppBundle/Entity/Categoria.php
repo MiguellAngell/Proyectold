@@ -75,6 +75,14 @@ class Categoria
         $this->gestiona = new ArrayCollection();
     }
 
+
+    /// Convertir en una cadena
+
+    public function __toString()
+    {
+        return $this->getNombreCategoria();
+    }
+
     /// ------------ ///
 
     /**

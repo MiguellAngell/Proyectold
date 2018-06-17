@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    Detalle: {{ grupos.nombre }}
+{% endblock %}
+
+{% block content %}
+    {% for mensaje in app.flashes('error') %}
+        <div class="alert alert-danger">
+            {{ mensaje }}
+        </div>
+    {% endfor %}
+    <h1>{{ grupos.nombre }}</h1>
+
+    <div class="alert alert-warning">
+        ¿Está seguro de que desea eliminar el grupo? La operación no se puede deshacer.
+    </div>
+    <form method="post">
+        <a href="{{ path('grupos_listar') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Volver al listado de grupos</a>
+        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar grupo</button>
+    </form>
+
+{% endblock %}
+
