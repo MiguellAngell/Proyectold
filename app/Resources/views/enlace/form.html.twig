@@ -17,8 +17,8 @@
     <div class="form-group">
         <div class="col-sm-2"></div>
         <div class="col-sm-10">
-             <button type="submit" class="btn btn-success">Guardar cambios</button>
-             {% if enlace.id %}<a href="{{ path('enlace_eliminar', {'id': enlace.id}) }}" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</a>{% endif %}
+            {% if is_granted('ENLACE_MODIFICAR', enlace) %}<button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Guardar cambios</button>{% endif %}
+            {% if enlace.id and is_granted('ENLACE_ELIMINAR', enlace) %}<a href="{{ path('enlace_eliminar', {'id': enlace.id}) }}" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</a>{% endif %}
              <a href="{{ path('enlaces_listar') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Volver al listado de enlaces</a>
         </div>
     </div>

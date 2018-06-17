@@ -22,7 +22,13 @@
         {% for link in enlace %}
             <tr>
                 <td>{{ link.nombre}}</td>
-                <td><a href="{{ path('enlaces_mostrar', {'id': link.id}) }}">{{ link.autor }}</a></td>
+                <td>
+                    {% if is_granted('IDEA_VER', link) %}
+                    <a href="{{ path('enlaces_mostrar', {'id': link.id}) }}">{{ link.autor }}</a>
+                    {% else %}
+                        {{ link.nombre }}
+                    {% endif %}
+                </td>
                 <td>{{ link.descripcion }}</td>
                 <td><a href="{{ path('enlace_usuario_mostrar', {'id': link.autor.id}) }}">{{ link.autor }}</a></td>
             </tr>

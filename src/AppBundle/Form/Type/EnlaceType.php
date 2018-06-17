@@ -22,12 +22,14 @@ class EnlaceType extends AbstractType
                 'label' => 'Descripcion'
                 ])
             ->add('autor',null,[
-                'label' => 'Autor'
+                'label' => 'Autor',
+                'disabled' => !$options['admin']
             ])
             ->add('categoriaEnlace', null, [
                 'label' => 'Categorias',
                 'expanded' => true,
-                'required' => false
+                'required' => false,
+                'disabled' => !$options['admin']
                 ]);
     }
 
@@ -35,6 +37,7 @@ class EnlaceType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Enlace::class,
+            'admin' => false
         ]);
     }
 }

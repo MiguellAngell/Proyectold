@@ -5,6 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Enlace;
 use AppBundle\Entity\Usuario;
 use AppBundle\Form\Type\EnlaceType;
+use AppBundle\Security\EnlaceVoter;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,6 +39,7 @@ class EnlaceController extends Controller
 
     /**
      * @Route("/enlace/eliminar/{id}", name="enlace_eliminar")
+     * @Security("is_granted('IDEA_ELIMINAR', enlace)")
      */
     public function eliminarAction(Request $request, Enlace $enlace)
     {
@@ -63,25 +66,31 @@ class EnlaceController extends Controller
         ]);
     }
 
-
     /**
      * @Route("/enlace/nuevo", name="enlace_nuevo")
+     * @Route("/enlaces/{id}", name="enlaces_mostrar")
      */
-    public function nuevaAction(Request $request)
+    public function mostrarAction(Request $request, Enlace $enlace = null)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $enlace = new Enlace();
-        $em->persist($enlace);
+        if (null === $enlace) {
+            $enlace = new Enlace();
+            $enlace->setAutor($this->getUser());
+            $em->persist($enlace);
+        }
 
-        $form = $this->createForm(EnlaceType::class, $enlace);
+        $form = $this->createForm(EnlaceType::class, $enlace, [
+            'disabled' => !$this->isGranted(EnlaceVoter::MODIFICAR, $enlace),
+            'admin' => $this->isGranted('ROLE_ADMIN')
+        ]);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $em->flush();
-                return $this->redirectToRoute('enlace_listar');
+                return $this->redirectToRoute('enlaces_listar');
             }
             catch (\Exception $e) {
                 $this->addFlash('error', 'No se han podido guardar los cambios');
@@ -93,30 +102,5 @@ class EnlaceController extends Controller
             'formulario' => $form->createView()
         ]);
     }
-
-    /**
-     * @Route("/enlaces/{id}", name="enlaces_mostrar")
-     */
-    public function mostrarAction(Request $request,Enlace $enlace)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $form = $this->createForm(EnlaceType::class, $enlace);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-        try {
-            $em->flush();
-        } catch (\Exception $e) {
-            $this->addFlash('error', 'No se han podido guardar los cambios');
-        }
-    }
-        return $this->render('enlace/form.html.twig', [
-            'enlace' => $enlace,
-            'formulario' => $form->createView()
-        ]);
-    }
-
 
 }

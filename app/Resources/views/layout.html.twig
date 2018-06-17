@@ -23,6 +23,16 @@
                     <li{% if app.request.attributes.get('_route') == 'administrar_listar' %} class="active"{% endif %}><a href="{{ path('administrar_listar') }}"><i class="fa fa-list"></i> Administrar</a></li>
                     <li{% if app.request.attributes.get('_route') == 'gestiona_listar' %} class="active"{% endif %}><a href="{{ path('gestiona_listar') }}"><i class="fa fa-list"></i> Gestion Categorias</a></li>
                 </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if app.user %}
+                        <p class="navbar-text">Conectado como <a href="{{ path('usuario_cambiar_clave') }}">{{ app.user }}</a></p>
+                    {% endif %}
+                    {% if app.user %}
+                        <li><a href="{{ path('usuario_salir') }}"><i class="fa fa-sign-out"></i> Salir</a></li>
+                    {% else %}
+                        <li><a href="{{ path('usuario_entrar') }}"><i class="fa fa-sign-in"></i> Acceder</a></li>
+                    {% endif %}
+                </ul>
             </div><!--/.nav-collapse -->
         </div>
     </nav>

@@ -1,9 +1,30 @@
 AppBundle\Entity\Usuario:
+  admin:
+   nombre: adminUser
+   apellidos: administrador
+   nombreUsuario: admin
+   password:  <codificaPassword('admin')>
+   correoElectronico: <es_ES:email()>
+   tipoUsuario: admin
+  gestor:
+   nombre: gestorUser
+   apellidos: gestor
+   nombreUsuario: gestor
+   password:  <codificaPassword('gestor')>
+   correoElectronico: <es_ES:email()>
+   tipoUsuario: gestor
+  moderador:
+   nombre: moderadorUser
+   apellidos: moderador
+   nombreUsuario: moderador
+   password:  <codificaPassword('moderador')>
+   correoElectronico: <es_ES:email()>
+   tipoUsuario: moderador
   usuario_{1..20}:
    nombre: <es_ES:firstName()>
    apellidos: '<es_ES:lastName()> <es_ES:lastName()>'
    nombreUsuario (unique): <es_ES:username()>
-   password: <word()>
+   password:  <codificaPassword('usuario')>
    correoElectronico: <es_ES:email()>
    tipoUsuario: user
 

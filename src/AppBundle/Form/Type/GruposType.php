@@ -53,6 +53,7 @@ class GruposType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Grupos::class,
+            'admin' => false
         ]);
     }
 }
