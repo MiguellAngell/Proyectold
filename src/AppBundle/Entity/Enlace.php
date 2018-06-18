@@ -150,14 +150,24 @@ class Enlace
     {
         return $this->administrar;
     }
-
     /**
      * @param Administrar $administrar
      * @return Enlace
      */
-    public function setAdministrar($administrar)
+    public function addAdministrar(Administrar $administrar)
     {
-        $this->administrar = $administrar;
+        if (!$this->administrar->contains($administrar)) {
+            $this->administrar->add($administrar);
+        }
+        return $this;
+    }
+    /**
+     * @param Administrar $administrar
+     * @return Enlace
+     */
+    public function removeAdministrar(Administrar $administrar)
+    {
+        $this->administrar->removeElement($administrar);
         return $this;
     }
 

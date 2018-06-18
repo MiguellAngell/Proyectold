@@ -8,7 +8,7 @@ use Doctrine\DBAL\Schema\Schema;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20180615230209 extends AbstractMigration
+class Version20180618185550 extends AbstractMigration
 {
     /**
      * @param Schema $schema
@@ -18,7 +18,7 @@ class Version20180615230209 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE administrar CHANGE fecha_aceptacion fecha_aceptacion DATE DEFAULT NULL, CHANGE fecha_rechazo fecha_rechazo DATE DEFAULT NULL');
+        $this->addSql('ALTER TABLE categoria CHANGE fecha_aceptacion fecha_aceptacion DATE DEFAULT NULL');
     }
 
     /**
@@ -29,6 +29,6 @@ class Version20180615230209 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE administrar CHANGE fecha_aceptacion fecha_aceptacion DATE NOT NULL, CHANGE fecha_rechazo fecha_rechazo DATE NOT NULL');
+        $this->addSql('ALTER TABLE categoria CHANGE fecha_aceptacion fecha_aceptacion DATE NOT NULL');
     }
 }

@@ -306,8 +306,8 @@ class Usuario implements UserInterface
      */
     public function addAdministrar(Administrar $administrar)
     {
-        if (!$this->$administrar->contains($administrar)) {
-            $this->$administrar->add($administrar);
+        if (!$this->administrar->contains($administrar)) {
+            $this->administrar->add($administrar);
         }
         return $this;
     }
@@ -318,8 +318,8 @@ class Usuario implements UserInterface
      */
     public function removeAdministrar(Administrar $administrar)
     {
-        if ($this->$administrar->contains($administrar)) {
-            $this->$administrar->removeElement($administrar);
+        if ($this->administrar->contains($administrar)) {
+            $this->administrar->removeElement($administrar);
         }
         return $this;
     }
@@ -338,8 +338,8 @@ class Usuario implements UserInterface
      */
     public function addGrupos(Grupos $grupos)
     {
-        if (!$this->$grupos->contains($grupos)) {
-            $this->$grupos->add($grupos);
+        if (!$this->grupos->contains($grupos)) {
+            $this->grupos->add($grupos);
         }
         return $this;
     }
@@ -351,8 +351,8 @@ class Usuario implements UserInterface
      */
     public function removeGrupos(Grupos $grupos)
     {
-        if ($this->$grupos->contains($grupos)) {
-            $this->$grupos->removeElement($grupos);
+        if ($this->grupos->contains($grupos)) {
+            $this->grupos->removeElement($grupos);
         }
         return $this;
     }

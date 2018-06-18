@@ -26,7 +26,7 @@
                     {% if is_granted('IDEA_VER', link) %}
                     <a href="{{ path('enlaces_mostrar', {'id': link.id}) }}">{{ link.autor }}</a>
                     {% else %}
-                        {{ link.nombre }}
+                        {{ link.autor }}
                     {% endif %}
                 </td>
                 <td>{{ link.descripcion }}</td>

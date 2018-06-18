@@ -42,7 +42,7 @@ class Categoria
     private $aprobada;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      *
      * @var \DateTime
      */
@@ -166,7 +166,7 @@ class Categoria
     }
 
     /**
-     * @return Collection|Enlace[]
+     * @return Collection
      */
     public function getTotalEnlaces()
     {
@@ -174,12 +174,24 @@ class Categoria
     }
 
     /**
-     * @param int $totalEnlaces
+     * @param Enlace $totalenlaces
      * @return Categoria
      */
-    public function setTotalEnlaces($totalEnlaces)
+    public function addTotalenlaces(Categoria $totalenlaces)
     {
-        $this->totalEnlaces = $totalEnlaces;
+        if (!$this->totalEnlaces->contains($totalenlaces)) {
+            $this->totalEnlaces->add($totalenlaces);
+        }
+        return $this;
+    }
+
+    /**
+     * @param Enlace $totalenlaces
+     * @return Categoria
+     */
+    public function removeAdministrar(Administrar $totalenlaces)
+    {
+        $this->totalEnlaces->removeElement($totalenlaces);
         return $this;
     }
 
@@ -195,10 +207,21 @@ class Categoria
      * @param Gestiona $gestiona
      * @return Categoria
      */
-    public function setGestiona($gestiona)
+    public function addGestiona(Gestiona $gestiona)
     {
-        $this->gestiona = $gestiona;
-        return  $this;
+        if (!$this->gestiona->contains($gestiona)) {
+            $this->gestiona->add($gestiona);
+        }
+        return $this;
+    }
+    /**
+     * @param Gestiona $gestiona
+     * @return Categoria
+     */
+    public function removeGestiona(Gestiona $gestiona)
+    {
+        $this->gestiona->removeElement($gestiona);
+        return $this;
     }
 
     /**
@@ -216,6 +239,7 @@ class Categoria
     {
         $this->grupo = $grupo;
     }
+
 
 
 }
