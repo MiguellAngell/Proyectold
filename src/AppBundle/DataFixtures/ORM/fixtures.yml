@@ -43,8 +43,8 @@ AppBundle\Entity\Categoria:
 
 AppBundle\Entity\Administrar:
  administrar_{1..10}:
-  idUsuario: '@usuario*'
-  idEnlace: '@enlace*'
+  usuario: '@usuario*'
+  enlace: '@enlace*'
   fechaSubida: <dateTimeThisYear()>
   fechaAceptacion: '25%? <dateTimeBetween($fechaSubida, "now")>'
   fechaRechazo: '25%? <dateTimeBetween(max($fechaSubida, $fechaAceptacion), "now")>'
@@ -52,8 +52,8 @@ AppBundle\Entity\Administrar:
 
 AppBundle\Entity\Gestiona:
  gestiona_{1..20}:
-  idUsuario: '@usuario*'
-  idCategoria: '@categoria*'
+  usuario: '@usuario*'
+  categoria: '@categoria*'
   numeroCambios: <numberBetween(1,5)>
   ultimaModificacion: <dateTimeBetween("dateTimeThisYear()", "now")>
   observaciones: <paragraph()>

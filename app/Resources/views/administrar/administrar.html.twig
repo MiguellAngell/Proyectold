@@ -19,8 +19,8 @@
         <tbody>
         {% for adm in administrar %}
             <tr>
-                <td>{{ adm.idUsuario }}</td>
-                <td>{{ adm.idEnlace.nombre}}</td>
+                <td>{{ adm.usuario }}</td>
+                <td>{{ adm.enlace.nombre}}</td>
                 <td>{{ adm.fechaSubida|date('d/m/Y') }}</td>
                 <td>{{ adm.fechaAceptacion|date('d/m/Y') }}</td>
                 <td>{{ adm.fechaRechazo|date('d/m/Y') }}</td>

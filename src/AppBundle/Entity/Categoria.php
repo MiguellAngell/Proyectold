@@ -49,14 +49,14 @@ class Categoria
     private $fechaAceptacion;
 
     /**
-     * @ORM\OneToMany(targetEntity="Enlace", mappedBy="categoriaEnlace")
+     * @ORM\OneToMany(targetEntity="Enlace", mappedBy="categoria")
      *
      * @var Collection|Enlace[]
      */
-    private $totalEnlaces;
+    private $enlaces;
 
     /**
-     * @ORM\OneToMany(targetEntity="Gestiona", mappedBy="idCategoria")
+     * @ORM\OneToMany(targetEntity="Gestiona", mappedBy="categoria")
      *
      * @var Collection|Gestiona[]
      */
@@ -71,7 +71,7 @@ class Categoria
 
     public function __construct()
     {
-        $this->totalEnlaces = new ArrayCollection();
+        $this->enlaces = new ArrayCollection();
         $this->gestiona = new ArrayCollection();
     }
 
@@ -168,30 +168,30 @@ class Categoria
     /**
      * @return Collection
      */
-    public function getTotalEnlaces()
+    public function getEnlaces()
     {
-        return $this->totalEnlaces;
+        return $this->enlaces;
     }
 
     /**
-     * @param Enlace $totalenlaces
+     * @param Enlace $enlaces
      * @return Categoria
      */
-    public function addTotalenlaces(Categoria $totalenlaces)
+    public function addEnlaces(Enlace $enlaces)
     {
-        if (!$this->totalEnlaces->contains($totalenlaces)) {
-            $this->totalEnlaces->add($totalenlaces);
+        if (!$this->enlaces->contains($enlaces)) {
+            $this->enlaces->add($enlaces);
         }
         return $this;
     }
 
     /**
-     * @param Enlace $totalenlaces
+     * @param Enlace $enlaces
      * @return Categoria
      */
-    public function removeAdministrar(Administrar $totalenlaces)
+    public function removeEnlaces(Enlace $enlaces)
     {
-        $this->totalEnlaces->removeElement($totalenlaces);
+        $this->enlaces->removeElement($enlaces);
         return $this;
     }
 

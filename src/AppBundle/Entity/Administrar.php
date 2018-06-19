@@ -16,7 +16,7 @@ class Administrar
      *
      * @var Usuario
      */
-    private $idUsuario;
+    private $usuario;
 
     /**
      * @ORM\Id
@@ -24,7 +24,7 @@ class Administrar
      *
      * @var Enlace
      */
-    private $idEnlace;
+    private $enlace;
 
     /**
      * @ORM\Column(type="date")
@@ -57,38 +57,38 @@ class Administrar
     /**
      * @return Usuario
      */
-    public function getIdUsuario()
+    public function getUsuario()
     {
-        return $this->idUsuario;
+        return $this->usuario;
     }
 
     /**
-     * @param Usuario $idUsuario
+     * @param Usuario $usuario
      *
      * @return Administrar
      */
-    public function setIdUsuario($idUsuario)
+    public function setUsuario($usuario)
     {
-        $this->idUsuario = $idUsuario;
+        $this->usuario = $usuario;
         return $this;
     }
 
     /**
      * @return Enlace
      */
-    public function getIdEnlace()
+    public function getEnlace()
     {
-        return $this->idEnlace;
+        return $this->enlace;
     }
 
     /**
-     * @param Enlace $idEnlace
+     * @param Enlace $enlace
      *
      * @return Administrar
      */
-    public function setIdEnlace($idEnlace)
+    public function setEnlace($enlace)
     {
-        $this->idEnlace = $idEnlace;
+        $this->enlace = $enlace;
         return $this;
     }
 

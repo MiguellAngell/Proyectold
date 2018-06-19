@@ -70,17 +70,17 @@ class Usuario implements UserInterface
      *
      * @var Collection|Enlace[]
      */
-    private $enlacesSubidos;
+    private $enlaces;
 
     /**
-     * @ORM\OneToMany(targetEntity="Gestiona", mappedBy="idUsuario")
+     * @ORM\OneToMany(targetEntity="Gestiona", mappedBy="usuario")
      *
      * @var Collection|Gestiona[]
      */
     private $gestiona;
 
     /**
-     * @ORM\OneToMany(targetEntity="Administrar", mappedBy="idUsuario")
+     * @ORM\OneToMany(targetEntity="Administrar", mappedBy="usuario")
      *
      * @var Collection|Administrar[]
      */
@@ -96,7 +96,7 @@ class Usuario implements UserInterface
 
     public function __construct()
     {
-        $this->enlacesSubidos = new ArrayCollection();
+        $this->enlaces = new ArrayCollection();
         $this->gestiona = new ArrayCollection();
         $this->administrar = new ArrayCollection();
         $this->grupos=new ArrayCollection();
@@ -228,32 +228,32 @@ class Usuario implements UserInterface
     /**
      * @return Collection|Enlace[]
      */
-    public function getEnlacesSubidos()
+    public function getEnlaces()
     {
-        return $this->enlacesSubidos;
+        return $this->enlaces;
     }
 
     /**
-     * @param Enlace $enlace
+     * @param Enlace $enlaces
      * @return Usuario
      */
-    public function addEnlacesSubidos(Enlace $enlace)
+    public function addEnlacesSubidos(Enlace $enlaces)
     {
-        if (!$this->enlacesSubidos->contains($enlace)) {
-            $this->enlacesSubidos->add($enlace);
+        if (!$this->enlaces->contains($enlaces)) {
+            $this->enlaces->add($enlaces);
         }
 
         return $this;
     }
 
     /**
-     * @param Enlace $enlace
+     * @param Enlace $enlaces
      * @return Usuario
      */
-    public function removeEnlacesSubidos(Enlace $enlace)
+    public function removeEnlacesSubidos(Enlace $enlaces)
     {
-        if ($this->enlacesSubidos->contains($enlace)) {
-            $this->enlacesSubidos->removeElement($enlace);
+        if ($this->enlaces->contains($enlaces)) {
+            $this->enlaces->removeElement($enlaces);
         }
 
         return $this;

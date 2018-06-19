@@ -18,8 +18,8 @@
         <tbody>
         {% for ges in gestiona %}
             <tr>
-                <td>{{ ges.idUsuario }}</td>
-                <td>{{ ges.idCategoria.nombreCategoria}}</td>
+                <td>{{ ges.usuario }}</td>
+                <td>{{ ges.categoria.nombreCategoria}}</td>
                 <td>{{ ges.numeroCambios }}</td>
                 <td>{{ ges.ultimaModificacion|date('d/m/Y') }}</td>
                 <td>{{ ges.observaciones }}</td>

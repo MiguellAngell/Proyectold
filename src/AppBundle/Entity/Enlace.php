@@ -36,7 +36,7 @@ class Enlace
     private $descripcion;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario", inversedBy="enlacesSubidos")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Usuario", inversedBy="enlaces")
      * @ORM\JoinColumn(nullable=false)
      *
      * @var Usuario
@@ -44,13 +44,13 @@ class Enlace
     private $autor;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Categoria", inversedBy="totalEnlaces")
+     * @ORM\ManyToOne(targetEntity="Categoria", inversedBy="enlaces")
      * @var Categoria
      */
-    private $categoriaEnlace;
+    private $categoria;
 
     /**
-     * @ORM\OneToMany(targetEntity="Administrar", mappedBy="idEnlace")
+     * @ORM\OneToMany(targetEntity="Administrar", mappedBy="enlace")
      *
      * @var Collection|Administrar[]
      */
@@ -128,18 +128,18 @@ class Enlace
     /**
      * @return string
      */
-    public function getcategoriaEnlace()
+    public function getCategoria()
     {
-        return $this->categoriaEnlace;
+        return $this->categoria;
     }
 
     /**
-     * @param Usuario $categoriaEnlace
+     * @param Usuario $categoria
      * @return Enlace
      */
-    public function setcategoriaEnlace($categoriaEnlace)
+    public function setCategoria($categoria)
     {
-        $this->autor = $categoriaEnlace;
+        $this->autor = $categoria;
         return $this;
     }
 

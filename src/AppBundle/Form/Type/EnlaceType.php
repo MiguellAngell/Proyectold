@@ -25,7 +25,7 @@ class EnlaceType extends AbstractType
                 'label' => 'Autor',
                 'disabled' => !$options['admin']
             ])
-            ->add('categoriaEnlace', null, [
+            ->add('categoria', null, [
                 'label' => 'Categorias',
                 'expanded' => true,
                 'required' => false,

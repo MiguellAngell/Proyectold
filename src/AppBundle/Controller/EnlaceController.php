@@ -32,7 +32,7 @@ class EnlaceController extends Controller
     {
         return $this->render('enlace/enlace_usuario.html.twig', [
             'usuario' => $usuario,
-            'enlace' => $usuario->getEnlacesSubidos()
+            'enlace' => $usuario->getEnlaces()
         ]);
     }
 

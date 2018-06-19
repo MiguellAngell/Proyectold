@@ -16,7 +16,7 @@ class Gestiona
      *
      * @var Usuario
      */
-    private $idUsuario;
+    private $usuario;
 
     /**
      * @ORM\Id
@@ -24,7 +24,7 @@ class Gestiona
      *
      * @var Categoria
      */
-    private $idCategoria;
+    private $categoria;
 
     /**
      * @ORM\Column(type="integer")
@@ -52,38 +52,38 @@ class Gestiona
     /**
      * @return Usuario
      */
-    public function getIdUsuario()
+    public function getUsuario()
     {
-        return $this->idUsuario;
+        return $this->usuario;
     }
 
     /**
-     * @param Usuario $idUsuario
+     * @param Usuario $usuario
      *
      * @return Gestiona
      */
-    public function setIdUsuario($idUsuario)
+    public function setIdUsuario($usuario)
     {
-        $this->idUsuario = $idUsuario;
+        $this->usuario = $usuario;
         return $this;
     }
 
     /**
      * @return Categoria
      */
-    public function getIdCategoria()
+    public function getCategoria()
     {
-        return $this->idCategoria;
+        return $this->categoria;
     }
 
     /**
-     * @param Categoria $idCategoria
+     * @param Categoria $categoria
      *
      * @return Gestiona
      */
-    public function setIdCategoria($idCategoria)
+    public function setIdCategoria($categoria)
     {
-        $this->idCategoria = $idCategoria;
+        $this->categoria = $categoria;
         return $this;
     }
 
